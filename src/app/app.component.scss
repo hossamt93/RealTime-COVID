@@ -1,0 +1,63 @@
+.app-header{
+    font-size: 30px;
+    text-align: center;
+    padding-top: 10px;
+}
+table{
+    height: 100%;
+    width: 98%;
+}
+.header{
+    height: 15%;
+    width:100% ;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.chart{
+    height: 40%;
+    width:800px ;
+    margin-bottom: 20px;
+}
+.tabluar{
+    height: 40%;
+    width:100% ;
+    display: block;
+    position: absolute;
+}
+footer{
+    height: 80px;
+    width: 100%;
+    background-color: rgb(26, 24, 24);
+    font-size: 15px;
+    text-align: center;
+    padding-top: 15px;
+    color: white;
+    bottom: 0px;
+}
+a{
+    text-decoration: none;
+    color: rgb(212, 209, 209);
+}
+
+@media screen and (min-width: 800px) {
+   .pie-chart {
+      width: 50%;
+      float: left;
+    }
+    .bar-chart{
+     width: 50%;
+      float: left;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+     .pie-chart {
+      width: 100%;
+      float: left;
+    }
+    .bar-chart{
+     width: 100%;
+      float: left;
+    }
+  }

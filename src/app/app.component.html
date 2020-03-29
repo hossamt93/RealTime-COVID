@@ -1,0 +1,119 @@
+<div class="app-header">
+  <p> Realtime COVID-19</p>
+</div>
+<mat-tab-group>
+  <mat-tab label="Chart View">
+    <table>
+      <tr class="header">
+        <td style="width: 25%; padding-left: 13px;">
+          <mat-form-field>
+            <mat-label>Filter By Country</mat-label>
+            <mat-select (selectionChange)="onCountryChange($event.value)">
+              <mat-option *ngFor="let country of COVIDData" [value]="country.country">
+                {{country.country}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+        <!-- <td style="width:25%; ">
+          <mat-form-field>
+            <mat-label>Sort By</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let sort of sortArray" [value]="sort">
+                {{sort}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+        <td style="width:25%;">
+          <mat-form-field>
+            <mat-label>Display By Items</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let item of displayItems" [value]="item">
+                {{item}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td> -->
+        <td style="width:25%;">
+          <button mat-raised-button color="primary" style="float: right;" (click)="getNextCountries()">Next Countries</button>
+        </td>
+      </tr>
+
+
+      <tr class="chart">
+        <div class="bar-chart">
+          <canvas id="barChart" style="width: 100%;height: 500px;margin-bottom: 20px; display:block;"></canvas>
+        </div>
+        <div class="pie-chart">
+          <canvas id="pieChart" style="width: 100%;height: 500px;margin-bottom: 20px; padding-left: 40px; display:block;"></canvas>
+        </div>
+
+      </tr>
+    </table>
+  </mat-tab>
+  <mat-tab label="Tabular View">
+    <div style="padding: 8px;">
+        <mat-form-field>
+          <mat-label>Filter By Country</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Egypt">
+        </mat-form-field>
+
+        <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="dataSource" matSort style="width: 100%; ">
+
+            <ng-container matColumnDef="country">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Country </th>
+              <td mat-cell *matCellDef="let row"> {{row.country}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="cases">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Cases </th>
+              <td mat-cell *matCellDef="let row"> {{row.cases}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="todayCases">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Today Cases </th>
+              <td mat-cell *matCellDef="let row"> {{row.todayCases}} </td>
+            </ng-container>
+
+            <!-- [style.color]="row.color" -->
+            <ng-container matColumnDef="deaths">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Deaths </th>
+              <td mat-cell *matCellDef="let row" > {{row.deaths}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="todayDeaths">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Today Deaths </th>
+              <td mat-cell *matCellDef="let row" > {{row.todayDeaths}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="recovered">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Recovered </th>
+              <td mat-cell *matCellDef="let row" > {{row.recovered}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="active">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Active </th>
+              <td mat-cell *matCellDef="let row" > {{row.active}} </td>
+            </ng-container>
+
+            <!-- <ng-container matColumnDef="critical">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Critical </th>
+              <td mat-cell *matCellDef="let row" > {{row.critical}} </td>
+            </ng-container> -->
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+            </tr>
+          </table>
+
+          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" style="margin-bottom: 150px;"></mat-paginator>
+        </div>
+        </div>
+  </mat-tab>
+</mat-tab-group>
+<footer>
+  &copy; Copy Rights are reserved. COVID-19 , Developed By <a href="https://github.com/hossamt93">Hossam Taha</a>
+
+</footer>
