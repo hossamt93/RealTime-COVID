@@ -44,8 +44,8 @@ export class AppComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    this.getCOVIDData();
-    setInterval(this.getCOVIDData, 18000000);
+    //this.getCOVIDData();
+    setInterval(()=>this.getCOVIDData(), 18000);
   }
 
   private getCOVIDData() {
