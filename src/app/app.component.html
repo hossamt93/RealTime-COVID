@@ -15,38 +15,18 @@
             </mat-select>
           </mat-form-field>
         </td>
-        <!-- <td style="width:25%; ">
-          <mat-form-field>
-            <mat-label>Sort By</mat-label>
-            <mat-select>
-              <mat-option *ngFor="let sort of sortArray" [value]="sort">
-                {{sort}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </td>
         <td style="width:25%;">
-          <mat-form-field>
-            <mat-label>Display By Items</mat-label>
-            <mat-select>
-              <mat-option *ngFor="let item of displayItems" [value]="item">
-                {{item}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </td> -->
-        <td style="width:25%;">
-          <button mat-raised-button color="primary" style="float: right;" (click)="getNextCountries()">Next Countries</button>
+          <button mat-raised-button color="primary" style="float: right;" (click)="getNextCountries(true,true)">Next Countries</button>
         </td>
       </tr>
 
 
       <tr class="chart">
         <div class="bar-chart">
-          <canvas id="barChart" style="width: 100%;height: 500px;margin-bottom: 20px; display:block;"></canvas>
+          <!-- <canvas id="barChart" style="width: 100%;height: 500px;margin-bottom: 20px; display:block;"></canvas> -->
         </div>
         <div class="pie-chart">
-          <canvas id="pieChart" style="width: 100%;height: 500px;margin-bottom: 20px; padding-left: 40px; display:block;"></canvas>
+          <!-- <canvas id="pieChart" style="width: 100%;height: 500px;margin-bottom: 20px; padding-left: 40px; display:block;"></canvas> -->
         </div>
 
       </tr>
@@ -75,9 +55,8 @@
             <ng-container matColumnDef="todayCases">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> Today Cases </th>
               <td mat-cell *matCellDef="let row"> {{row.todayCases}} </td>
-            </ng-container>
+            </ng-container> 
 
-            <!-- [style.color]="row.color" -->
             <ng-container matColumnDef="deaths">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> Deaths </th>
               <td mat-cell *matCellDef="let row" > {{row.deaths}} </td>
@@ -97,11 +76,6 @@
               <th mat-header-cell *matHeaderCellDef mat-sort-header> Active </th>
               <td mat-cell *matCellDef="let row" > {{row.active}} </td>
             </ng-container>
-
-            <!-- <ng-container matColumnDef="critical">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Critical </th>
-              <td mat-cell *matCellDef="let row" > {{row.critical}} </td>
-            </ng-container> -->
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;">
